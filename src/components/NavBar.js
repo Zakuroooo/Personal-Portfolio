@@ -77,13 +77,13 @@ export const NavBar = () => {
             <span className="navbar-text">
               <div className="social-icon">
                 <a href="https://www.linkedin.com/in/pranay-sarkar65/">
-                  <img src={navIcon1} alt="" />
+                  <img src={navIcon1} alt="linkedin-logo" />
                 </a>
                 <a href="https://github.com/Zakuroooo">
-                  <img src={github} alt="" />
+                  <img src={github} alt="github-logo" />
                 </a>
                 <a href="https://leetcode.com/u/Zakurooooo/">
-                  <img src={leetcode} alt="" />
+                  <img src={leetcode} alt="leetcode-logo" />
                 </a>
               </div>
               <HashLink to="#connect">

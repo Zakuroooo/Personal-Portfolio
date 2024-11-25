@@ -27,32 +27,71 @@ export const Contact = () => {
     e.preventDefault();
     setButtonText("Sending...");
 
-    const formData = new FormData();
-    formData.append("entry.1045906621", formDetails.firstName); // First Name
-    formData.append("entry.53956073", formDetails.lastName); // Last Name
-    formData.append("entry.2045422949", formDetails.email); // Email
-    formData.append("entry.494248953", formDetails.phone); // Phone
-    formData.append("entry.1194890540", formDetails.message); // Message
+    // Validate inputs
+    const namePattern = /^[a-zA-Z]+$/;
+    const phonePattern = /^[0-9]+$/;
 
-    // Correct Google Form URL for form submission
-    let response = await fetch(
-      "https://docs.google.com/forms/d/e/1FAIpQLScr-EofTbywekJTLthXW9KyN5TNEei1mlhc0wAQwqwyogVp9Q/formResponse",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    if (response.ok) {
-      setStatus({ success: true, message: "Message sent successfully" });
-      setFormDetails(formInitialDetails);
-    } else {
+    if (!namePattern.test(formDetails.firstName)) {
       setStatus({
         success: false,
-        message: "Something went wrong, please try again later.",
+        message: "First name should contain only letters.",
       });
+      setButtonText("Send");
+      return;
     }
-    setButtonText("Send");
+
+    if (!namePattern.test(formDetails.lastName)) {
+      setStatus({
+        success: false,
+        message: "Last name should contain only letters.",
+      });
+      setButtonText("Send");
+      return;
+    }
+
+    if (!phonePattern.test(formDetails.phone)) {
+      setStatus({
+        success: false,
+        message: "Phone number should contain only numbers.",
+      });
+      setButtonText("Send");
+      return;
+    }
+
+    // Google Form URL and query parameters
+    const formUrl =
+      "https://docs.google.com/forms/d/e/1FAIpQLScr-EofTbywekJTLthXW9KyN5TNEei1mlhc0wAQwqwyogVp9Q/formResponse";
+
+    const queryParams = new URLSearchParams({
+      "entry.1045906621": formDetails.firstName, // First Name
+      "entry.53956073": formDetails.lastName, // Last Name
+      "entry.2045422949": formDetails.email, // Email
+      "entry.494248953": formDetails.phone, // Phone
+      "entry.1194890540": formDetails.message, // Message
+    });
+
+    try {
+      const response = await fetch(`${formUrl}?${queryParams.toString()}`, {
+        method: "GET",
+      });
+
+      if (response.ok) {
+        setStatus({ success: true, message: "Message sent successfully!" });
+        setButtonText("Sent"); // Update button text to "Sent"
+        setTimeout(() => setButtonText("Send"), 5000); // Revert button text after 3 seconds
+        setFormDetails(formInitialDetails); // Clear the form
+      } else {
+        throw new Error("Submission failed.");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus({
+        success: false,
+        message: "",
+      });
+    } finally {
+      if (buttonText !== "Sent") setButtonText("Send");
+    }
   };
 
   return (
@@ -83,7 +122,7 @@ export const Contact = () => {
                   <h2>Get In Touch</h2>
                   <form onSubmit={handleSubmit}>
                     <Row>
-                      <Col size={12} sm={6} className="px-1">
+                      <Col size={12} sm={6} className="px-2">
                         <input
                           type="text"
                           value={formDetails.firstName}
@@ -93,17 +132,17 @@ export const Contact = () => {
                           }
                         />
                       </Col>
-                      <Col size={12} sm={6} className="px-1">
+                      <Col size={12} sm={6} className="px-2">
                         <input
                           type="text"
-                          value={formDetails.lasttName}
+                          value={formDetails.lastName}
                           placeholder="Last Name"
                           onChange={(e) =>
                             onFormUpdate("lastName", e.target.value)
                           }
                         />
                       </Col>
-                      <Col size={12} sm={6} className="px-1">
+                      <Col size={12} sm={6} className="px-2">
                         <input
                           type="email"
                           value={formDetails.email}
@@ -113,7 +152,7 @@ export const Contact = () => {
                           }
                         />
                       </Col>
-                      <Col size={12} sm={6} className="px-1">
+                      <Col size={12} sm={6} className="px-2">
                         <input
                           type="tel"
                           value={formDetails.phone}
@@ -123,7 +162,7 @@ export const Contact = () => {
                           }
                         />
                       </Col>
-                      <Col size={12} className="px-1">
+                      <Col size={12} className="px-2">
                         <textarea
                           rows="6"
                           value={formDetails.message}
