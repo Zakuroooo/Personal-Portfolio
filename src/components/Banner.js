@@ -4,6 +4,7 @@ import headerImg from "../assets/img/header-img.svg";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import jinwo from "../assets/img/jinwo3.png";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -96,7 +97,11 @@ export const Banner = () => {
                     isVisible ? "animate__animated animate__zoomIn" : ""
                   }
                 >
-                  <img src={headerImg} alt="Header Img" />
+                  <img
+                    style={{ width: "25rem" }}
+                    src={jinwo}
+                    alt="Header Img"
+                  />
                 </div>
               )}
             </TrackVisibility>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
+import jinwoshadow from "../assets/img/Jinwoshadow.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 
@@ -79,7 +80,7 @@ export const Contact = () => {
         setStatus({ success: true, message: "Message sent successfully!" });
         setButtonText("Sent"); // Update button text to "Sent"
         setTimeout(() => setButtonText("Send"), 5000); // Revert button text after 3 seconds
-        setFormDetails(formInitialDetails); // Clear the form
+        setFormDetails(formInitialDetails); //
       } else {
         throw new Error("Submission failed.");
       }
@@ -102,10 +103,11 @@ export const Contact = () => {
             <TrackVisibility>
               {({ isVisible }) => (
                 <img
+                  style={{ width: "25rem" }}
                   className={
                     isVisible ? "animate__animated animate__zoomIn" : ""
                   }
-                  src={contactImg}
+                  src={jinwoshadow}
                   alt="Contact Us"
                 />
               )}

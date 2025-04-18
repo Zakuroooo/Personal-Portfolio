@@ -6,6 +6,7 @@ import navIcon1 from "../assets/img/nav-icon1.svg";
 // import navIcon3 from "../assets/img/nav-icon3.svg";
 import github from "../assets/img/github.png";
 import leetcode from "../assets/img/leetcode.png";
+import Logo1 from "../assets/img/Logo2.png";
 
 import { HashLink } from "react-router-hash-link";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -37,7 +38,7 @@ export const NavBar = () => {
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
           <Navbar.Brand href="/">
-            <img src={logo} alt="Logo" />
+            <img src={Logo1} alt="Logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
@@ -75,7 +76,7 @@ export const NavBar = () => {
               </Nav.Link>
             </Nav>
             <span className="navbar-text">
-              <div className="social-icon">
+              {/* <div className="social-icon">
                 <a href="https://www.linkedin.com/in/pranay-sarkar65/">
                   <img src={navIcon1} alt="linkedin-logo" />
                 </a>
@@ -85,7 +86,7 @@ export const NavBar = () => {
                 <a href="https://leetcode.com/u/Zakurooooo/">
                   <img src={leetcode} alt="leetcode-logo" />
                 </a>
-              </div>
+              </div> */}
               <HashLink to="#connect">
                 <button className="vvd">
                   <span>Let’s Connect</span>
