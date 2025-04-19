@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Logo4 from "../assets/img/Logo2.png";
 import navIcon1 from "../assets/img/nav-icon1.svg";
-import github from "../assets/img/github.png";
+import github from "../assets/img/whitegithub.png";
 import leetcode from "../assets/img/leetcode.png";
 
 export const Footer = () => {

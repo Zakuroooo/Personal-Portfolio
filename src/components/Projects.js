@@ -1,8 +1,6 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
-import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
+
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import relianceimg from "../assets/img/reliance.png";
 import chatimg from "../assets/img/chatapp.png";
@@ -17,6 +15,7 @@ export const Projects = () => {
       description: "It's a Clone of Reliance Digital Website done by me.",
       imgUrl: relianceimg,
       url: "https://reliance-digital-clone-six.vercel.app/",
+      github: "https://github.com/Zakuroooo/reliance-digital-clone",
     },
     {
       title: "RealTime Chat Application",
@@ -24,12 +23,14 @@ export const Projects = () => {
         "It's a real time chat application where you can talk in real time.",
       imgUrl: chatimg,
       url: "https://chatapp-sable-psi.vercel.app/",
+      github: "https://github.com/Zakuroooo/ChatApp",
     },
     {
       title: "2048 Game",
       description: "It's a 2048 popular tile game.",
       imgUrl: twoimg,
       url: "https://zakuroooo.github.io/Game-2048/",
+      github: "https://github.com/Zakuroooo/Game-2048",
     },
   ];
 
