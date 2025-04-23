@@ -1,15 +1,9 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from "../assets/img/logo.svg";
-import navIcon1 from "../assets/img/nav-icon1.svg";
-// import navIcon2 from "../assets/img/nav-icon2.svg";
-// import navIcon3 from "../assets/img/nav-icon3.svg";
-import github from "../assets/img/github.png";
-import leetcode from "../assets/img/leetcode.png";
-import Logo1 from "../assets/img/Logo2.png";
-
 import { HashLink } from "react-router-hash-link";
 import { BrowserRouter as Router } from "react-router-dom";
+
+import Logo1 from "../assets/img/Logo2.png";
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
@@ -23,9 +17,7 @@ export const NavBar = () => {
         setScrolled(false);
       }
     };
-
     window.addEventListener("scroll", onScroll);
-
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -35,7 +27,7 @@ export const NavBar = () => {
 
   return (
     <Router>
-      <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
+      <Navbar expand="md" className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <Container>
           <Navbar.Brand href="/">
             <img src={Logo1} alt="Logo" />
@@ -76,17 +68,6 @@ export const NavBar = () => {
               </Nav.Link>
             </Nav>
             <span className="navbar-text">
-              {/* <div className="social-icon">
-                <a href="https://www.linkedin.com/in/pranay-sarkar65/">
-                  <img src={navIcon1} alt="linkedin-logo" />
-                </a>
-                <a href="https://github.com/Zakuroooo">
-                  <img src={github} alt="github-logo" />
-                </a>
-                <a href="https://leetcode.com/u/Zakurooooo/">
-                  <img src={leetcode} alt="leetcode-logo" />
-                </a>
-              </div> */}
               <HashLink to="#connect">
                 <button className="vvd">
                   <span>Let’s Connect</span>

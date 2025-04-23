@@ -103,7 +103,7 @@ export const Contact = () => {
             <TrackVisibility>
               {({ isVisible }) => (
                 <img
-                  style={{ width: "25rem" }}
+                  style={{ width: "20rem" }}
                   className={
                     isVisible ? "animate__animated animate__zoomIn" : ""
                   }
